@@ -325,18 +325,19 @@ header
 
 .header-area .main-nav .nav li:last-child a:hover {
   background-color: #f9735b;
+  color: #fff;
   opacity: 1;
 }
 
 .header-area .main-nav .nav li:hover a,
 .header-area .main-nav .nav li a.active {
-  color: #ed563b!important;
+  color: black!important;
   opacity: 1;
 }
 
 .background-header .main-nav .nav li:hover a,
 .background-header .main-nav .nav li a.active {
-  color: #ed563b!important;
+  color: black!important;
   opacity: 1;
 }
 

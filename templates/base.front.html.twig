@@ -51,7 +51,7 @@
             <div class="col-12">
                 <nav class="main-nav">
                     <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">{% block t %}Training{% endblock %}<em> Studio</em></a>
+                    <a href="index.html" class="logo">Extra<em> Sport</em></a>
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
@@ -60,8 +60,25 @@
                         <li class="scroll-to-section"><a href="#our-classes">Classes</a></li>
                         <li class="scroll-to-section"><a href="#schedule">Schedules</a></li>
                         <li class="scroll-to-section"><a href="#contact-us">Contact</a></li>
-                        <li class="main-button"><a href="#">Sign Up</a></li>
-                        <li class="main-button"><a href="{{ asset('front/signup/signup.html') }}">Sign In</a></li>
+                        {% if not app.user %}
+                        <li class="main-button"><a href="/inscription">Sign Up</a></li>
+                        <li class="main-button"><a href="/connexion">Sign In</a></li>
+                        {% else %}
+
+
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {{ app.user.username }} {{ app.user.prenom }}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/user/edit/{{ app.user.cin }}">Profil</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ path('security_logout') }}">Déconnexion</a>
+                                </div>
+                            </li>
+                        {% endif %}
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -76,16 +93,22 @@
 
 <!-- ***** Main Banner Area Start ***** -->
 <div class="main-banner" id="top">
+    {% block ahmed %}
     <video autoplay muted loop id="bg-video">
         <source src="{{ asset('front/assets/images/gym-video.mp4')}} " type="video/mp4" />
     </video>
-
+    {% endblock %}
     <div class="video-overlay header-text">
         <div class="caption">
             <h6>work harder, get stronger</h6>
             <h2>easy with our <em>gym</em></h2>
             <div class="main-button scroll-to-section">
-                <a href="#features">Become a member</a>
+                {% if not app.user %}
+                <a href="/inscription">Become a member</a>
+                {% else %}
+
+                {% endif %}
+
             </div>
         </div>
     </div>
@@ -95,6 +118,7 @@
 <!-- ***** Features Item Start ***** -->
 <section class="section" id="features">
     <div class="container">
+        {% block terrain %}
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
                 <div class="section-heading">
@@ -172,6 +196,7 @@
                 </ul>
             </div>
         </div>
+        {% endblock %}
     </div>
 </section>
 <!-- ***** Features Item End ***** -->

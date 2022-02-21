@@ -249,7 +249,7 @@
         <div class="loginbackground box-background--white padding-top--64">
             <div class="loginbackground-gridContainer">
                 <div class="box-root flex-flex" style="grid-area: top / start / 8 / end;">
-                    <div class="box-root" style="background-image: image-set("C:\Users\Skander\Downloads\interieur-salle-sport-equipements_23-2147949749.jpg"); flex-grow: 1;">
+                    <div class="box-root" style=" flex-grow: 1;">
                 </div>
             </div>
             <div class="box-root flex-flex" style="grid-area: 4 / 2 / auto / 5;">
@@ -280,16 +280,19 @@
     </div>
     <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
         <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
-            <h1><a href="http://blog.stackfindover.com/" rel="dofollow">Stackfindover</a></h1>
+            <h1><a href="http://blog.stackfindover.com/" rel="dofollow">EXTRA SPORT</a></h1>
         </div>
         <div class="formbg-outer">
             <div class="formbg">
                 <div class="formbg-inner padding-horizontal--48">
                     <span class="padding-bottom--15">Sign in to your account</span>
+                    {% block email %}
                     <form id="stripe-login">
                         <div class="field padding-bottom--24">
+
                             <label for="email">Email</label>
-                            <input type="email" name="email">
+                            <input type="email" required name="email">
+
                         </div>
                         <div class="field padding-bottom--24">
                             <div class="grid--50-50">
@@ -305,13 +308,17 @@
                                 <input type="checkbox" name="checkbox"> Stay signed in for a week
                             </label>
                         </div>
+
                         <div class="field padding-bottom--24">
-                            <input type="submit" name="submit" value="Continue">
+                            <input type="submit" name="submit" value="Continue" href="{{ path('test')}}>
                         </div>
                         <div class="field">
                             <a class="ssolink" href="#">Use single sign-on (Google) instead</a>
                         </div>
+
                     </form>
+                    {% endblock %}
+
                 </div>
             </div>
             <div class="footer-link padding-top--24">
