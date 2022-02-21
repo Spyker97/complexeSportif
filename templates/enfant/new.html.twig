@@ -1,0 +1,47 @@
+{% extends 'base.addEnfant.html.twig' %}
+
+{% block ajouter %}
+
+    {{ form_start (form) }}
+
+
+    <fieldset>
+        {{ form_row (form.name, {'label' : 'Nom d\'utilisateur','attr':
+            {'placeholder':'Entrer votre nom...'}}) }}
+    </fieldset>
+    <fieldset>
+        {{ form_row (form.poids, {'label' : '','attr':
+            {'placeholder':'Entrer votre poids...'}}) }}
+    </fieldset>
+    <fieldset>
+        {{ form_row (form.taille, {'label' : '','attr':
+            {'placeholder':'Entrer votre taille...'}}) }}
+        {{ form_errors(form.taille) }}
+
+    </fieldset>
+    <fieldset>
+        {{ form_row (form.taille, {'label' : '','attr':
+            {'placeholder':'Entrer votre taille...'}}) }}
+
+    </fieldset>
+    <fieldset>
+        {{ form_row (form.age, {'label' : '','attr':
+            {'placeholder':'Entrer votre age...'}}) }}
+        {{ form_errors(form.age) }}
+    </fieldset>
+    <fieldset>
+        {{ form_row (form.cinparent, {'label' : '','attr':
+            {'placeholder':'Entrer votre cinparent...'}}) }}
+        {{ form_errors(form.cinparent) }}
+
+    </fieldset>
+    <fieldset>
+        {{ form_row (form.academie, {'label' : '','attr':
+            {'placeholder':'Entrer votre sport...'}}) }}
+    </fieldset>
+
+
+    <button type="submit" class="btn btn-success">Inscription!</button>
+    {{ form_end (form) }}
+
+{% endblock %}

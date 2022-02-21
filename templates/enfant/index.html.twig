@@ -1,0 +1,25 @@
+{% extends 'base.enfant.html.twig' %}
+
+
+
+{% block afficher %}
+
+        {% for enfant in enfants %}
+            <tr>
+                <td>{{ enfant.id }}</td>
+                <td>{{ enfant.name }}</td>
+                <td>{{ enfant.age }}</td>
+                <td>{{ enfant.poids }}</td>
+                <td>{{ enfant.taille }}</td>
+                <td>{{ enfant.cinparent }}</td>
+                <td>{{ enfant.academie.name }}</td>
+                <td>
+
+                    <a href="{{ path('enfant_edit', {'id': enfant.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% endfor %}
+
+
+    <a href="{{ path('enfant_new') }}">Create new</a>
+{% endblock %}

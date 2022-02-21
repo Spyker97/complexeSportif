@@ -1,0 +1,26 @@
+{% extends 'base.academie.html.twig' %}
+
+{% block title %} Academie index{% endblock %}
+
+{% block afficher %}
+    <h1>Academie index</h1>
+
+
+        {% for academie in academies %}
+            <tr>
+                <td>{{ academie.id }}</td>
+                <td>{{ academie.name }}</td>
+                <td>{{ academie.nbrSeances }}</td>
+
+                <td><a href="/academie/delete/{{ academie.id }}">Delete</a>
+
+                    <a href="{{ path('academie_edit', {'id': academie.id}) }}">Edite</a>
+                </td>
+            </tr>
+
+
+        {% endfor %}
+
+    <a href="{{ path('academie_new') }}">Create new</a>
+
+{% endblock %}
