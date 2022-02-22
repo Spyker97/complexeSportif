@@ -1,0 +1,36 @@
+{% extends 'base.reservation.html.twig' %}
+{#<!doctype html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport"#}
+{#          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">#}
+{#    <meta http-equiv="X-UA-Compatible" content="ie=edge">#}
+{#    <title>Document</title>#}
+{#</head>#}
+{#<body>#}
+{#<tab>#}
+{#    <tr>#}
+{#        <th>id</th>#}
+{#        <th>id_terrain</th>#}
+{#        <th>cin</th>#}
+{#        <th>discipline</th>#}
+{#        <td>DELETE</td>#}
+{#    </tr>#}
+
+{% block afficher %}
+
+    {% for c in res %}
+<tr >
+        <td>{{ c.id }}</td>
+        <td>{{ c.id_terrain }}</td>
+        <td>{{ c.cin }}</td>
+        <td>{{ c.discipline }}</td>
+        <td><a href="{{ path('aa',{'id':c.id}) }}">UPDATE</a>
+          <a href="{{ path('dd',{'id':c.id}) }}">DELETE</a></td>
+    </tr >
+{% endfor %}
+{% endblock %}
+{#</tab>#}
+{#</body>#}
+{#</html>#}

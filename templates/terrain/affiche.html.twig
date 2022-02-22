@@ -1,0 +1,41 @@
+{% extends 'base.terrain.html.twig' %}
+{#<table>#}
+{#    <tr>#}
+{#        <th> id terrain</th>#}
+{#        <th> type</th>#}
+{#        <th> chef</th>#}
+{#        <th>Update</th>#}
+{#        <th> equipement</th>#}
+{#    </tr>#}
+{#    <tr {% for c in terrain%}>#}
+{#        <td>{{ c.id_terrain }} </td>#}
+
+{#        <td>{{ c.type }} </td>#}
+{#        <td>{{ c.chef }} </td>#}
+{#        <td>{{ c.equipement }} </td>#}
+{#        <td><a href="{{ path('update',{'id':c.id}) }}">UPDATE</a></td>#}
+{#        <td><a href="{{ path('d',{'id':c.id}) }}">DELETE</a></td>#}
+
+{#    </tr {% endfor %}>#}
+
+{#</table>#}
+
+
+{% block afficher %}
+
+    {% for c in terrain %}
+        <tr>
+
+            <td>{{ c.id_terrain }} </td>
+
+            <td>{{ c.type }} </td>
+            <td>{{ c.chef }} </td>
+            <td>{{ c.equipement }} </td>
+            <td><a href="{{ path('update',{'id':c.id}) }}">UPDATE</a>
+                <a href="{{ path('d',{'id':c.id}) }}">DELETE</a>
+            </td>
+
+
+        </tr>
+    {% endfor %}
+{% endblock %}

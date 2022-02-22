@@ -1,0 +1,37 @@
+<h1>ajout reservation</h1>
+
+{% block ajouter %}
+    <fieldset>
+    {{ form_row(form.id_terrain,{'label' : 'Nom d\'utilisateur','attr':
+        {'placeholder':'Entrer votre nom...'}} ) }}
+    </fieldset>
+    <fieldset>
+    {{ form_row(form.cin,{'label' : 'Nom d\'utilisateur','attr':
+        {'placeholder':'Entrer votre nom...'}} ) }}
+    </fieldset>
+
+    <fieldset>
+    {{ form_row(form.discipline,{'label' : 'Nom d\'utilisateur','attr':
+        {'placeholder':'Entrer votre nom...'}} ) }}
+
+    </fieldset>
+
+
+    <button type="submit" class="btn btn-success">Inscription!</button>
+
+{% endblock %}
+
+
+
+
+
+{#<fieldset>#}
+{#    {{ form_row (form.name, {'label' : 'Nom d\'utilisateur','attr':#}
+{#        {'placeholder':'Entrer votre nom...'}}) }}#}
+{#</fieldset>#}
+
+{#<h1>ajout reservation</h1>#}
+
+{#{% block ajouter %}#}
+{#    {{ form(form) }}#}
+{#{% endblock %}#}
