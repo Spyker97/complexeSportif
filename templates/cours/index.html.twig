@@ -1,0 +1,28 @@
+{% extends 'base.cours.html.twig' %}
+
+
+{% block afficher %}
+
+        {% for cour in cours %}
+            <tr>
+                <td>{{ cour.id }}</td>
+                <td>{{ cour.Date ? cour.Date|date('Y-m-d') : '' }}</td>
+                <td>{{ cour.NomCoach }}</td>
+                <td>{{ cour.NumSalle }}</td>
+                <td>{{ cour.TypeCours }}</td>
+                <td> <img src="{{ asset('uploads/images/' ~ cour.image) }}"
+                          alt="" width="300" height="200"></td>
+                <td>{{ cour.heure |date ('H:i:sP') }}</td>
+
+
+                <td>
+                    <a href="{{ path('cours_show', {'id': cour.id}) }}">show</a>
+                    <a href="{{ path('cours_edit', {'id': cour.id}) }}">edit</a>
+                </td>
+            </tr>
+
+        {% endfor %}
+
+
+    <a href="{{ path('cours_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.front.html.twig' %}
+
+ {% block modifier %}
+     <div class="row">
+         <div class="col-lg-6 offset-lg-3">
+             <div class="section-heading">
+                 <h2><em>Program</em></h2>
+
+
+             </div>
+         </div>
+
+         <div class="col-lg-6">
+
+             <ul class="features-items">
+                 {% for cour in cours %}
+                 <li class="feature-item">
+
+
+                     <div class="right-content">
+
+                         <h4>{{ cour.TypeCours }}</h4>
+                         <td><div class="left-icon"><img src="{{ asset('uploads/images/' ~ cour.image) }}"
+                                                         alt="" width="300" height="200"> </div></td>
+
+                        <em>NomCoach:</em>
+                         <h4>{{ cour.NomCoach }}</h4>
+
+                         <em>NumSalle:</em>
+                         <h4>{{ cour.NumSalle }}</h4>
+                         <em>Date:</em>
+                         <h4>{{ cour.Date ? cour.Date|date('Y-m-d') : '' }}</h4>
+                         <em>heure:</em>
+                         <h4>{{ cour.heure |date ('H:i:sP') }}</h4>
+
+                         <img src="{{ asset('front/assets/images/line-dec.png')}}" alt="waves">
+                         <img src="{{ asset('front/assets/images/line-dec.png')}}" alt="waves">
+                         <img src="{{ asset('front/assets/images/line-dec.png')}}" alt="waves">
+
+
+                     </div>
+
+                 </li>
+
+                 {% endfor %}
+     <li class="main-button"><a href="/abonnement/new" class="text-button">abonner</a></li>
+
+
+ {% endblock %}

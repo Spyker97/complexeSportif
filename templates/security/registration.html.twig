@@ -1,0 +1,46 @@
+{% extends 'base.signin.html.twig' %}
+
+{% block form %}
+
+    {{ form_start (form) }}
+
+    <fieldset>
+    {{ form_row (form.cin, {'label' : '','attr':
+        {'placeholder':'Entre ur Cin...'}}) }}
+    </fieldset>
+    <fieldset>
+    {{ form_row (form.username, {'label' : 'Nom d\'utilisateur','attr':
+        {'placeholder':'Entre votre nom...'}}) }}
+    </fieldset>
+    <fieldset>
+    {{ form_row (form.prenom, {'label' : 'Prenom d\'utilisateur','attr':
+        {'placeholder':'Entre votre prenom...'}}) }}
+    </fieldset>
+    <fieldset>
+    {{ form_row (form.genre, {'label' : '','attr':
+        {'placeholder':'votre genre...'}}) }}
+    </fieldset>
+    <fieldset>
+    {{ form_row (form.date_naissance, {'label' : '','attr':
+        {'placeholder':'Votre date de naissance...'}}) }}
+    </fieldset>
+    <fieldset>
+    {{ form_row (form.email, {'label' : '','attr':
+        {'placeholder':'votre adresse email...'}}) }}
+    </fieldset>
+    <fieldset>
+    {{ form_row (form.password, {'label' : '','attr':
+        {'placeholder':'Mot e passe!...'}}) }}
+    </fieldset>
+    <fieldset>
+    {{ form_row (form.confirm_password, {'label' : 'Confirme password','attr':
+        {'placeholder':'Répéter votre Mot de passe...'}}) }}
+    </fieldset>
+    <fieldset>
+    {{ form_row (form.adresse, {'label' : '','attr':
+        {'placeholder':'Votre adresse...'}}) }}
+    </fieldset>
+
+    <button type="submit" class="btn btn-success">Inscription!</button>
+    {{ form_end (form) }}
+{% endblock %}
