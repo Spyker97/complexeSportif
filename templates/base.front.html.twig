@@ -56,11 +56,17 @@
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                         <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                        <li class="scroll-to-section"><a href="#features">About</a></li>
-                        <li class="scroll-to-section"><a href="#our-classes">Classes</a></li>
-                        <li class="scroll-to-section"><a href="#schedule">Schedules</a></li>
+                        <li class="scroll-to-section"><a href="#features">Terrain</a></li>
+                        <li class="scroll-to-section"><a href="#our-classes">Evenement</a></li>
+                        <li class="scroll-to-section"><a href="#schedule">Produit</a></li>
                         <li class="scroll-to-section"><a href="#contact-us">Contact</a></li>
+
+                        {% if  app.user and app.user.roles[0]== "ROLE_ADMIN" %}
+                        <li class="scroll-to-section"><a class="dropdown-item" href="/admiin">Dashboard</a></li>
+                        {% else %}
+                        {% endif %}
                         {% if not app.user %}
+
                         <li class="main-button"><a href="/inscription">Sign Up</a></li>
                         <li class="main-button"><a href="/connexion">Sign In</a></li>
                         {% else %}
@@ -69,16 +75,24 @@
 
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ app.user.username }} {{ app.user.prenom }}
+                                    {{ app.user.username }} {{ app.user.prenom}}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/user/edit/{{ app.user.cin }}">Profil</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
+
+
+
+
+
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ path('security_logout') }}">Déconnexion</a>
                                 </div>
                             </li>
+
+
                         {% endif %}
+
+
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>
@@ -432,6 +446,7 @@
                 <div class="contact-form">
                     <form id="contact" action="" method="post">
                         <div class="row">
+                            {% block contactt %}
                             <div class="col-md-6 col-sm-12">
                                 <fieldset>
                                     <input name="name" type="text" id="name" placeholder="Your Name*" required="">
@@ -457,6 +472,7 @@
                                     <button type="submit" id="form-submit" class="main-button">Send Message</button>
                                 </fieldset>
                             </div>
+                            {% endblock %}
                         </div>
                     </form>
                 </div>

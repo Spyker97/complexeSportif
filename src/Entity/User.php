@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Date;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -20,9 +20,21 @@ class User implements UserInterface
 {
     /**
      * @ORM\Id
+     * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Assert\Length(min="8",max="8", minMessage="Cin should be with 8 caractaire")
-     * @Assert\NotBlank(message="Chapms Obligatoire")
+     */
+    private $id;
+    /**
+     * @ORM\Column(type="integer",length=8, unique=true)
+     * @Assert\NotBlank(message="Cin is required")
+     * @Assert\GreaterThanOrEqual(
+     *     value=1000000,
+     *     message="Check your cin"
+     *     )
+     * @Assert\LessThanOrEqual(
+     *     value=99999999,
+     *     message="Check your cin"
+     *     )
      */
     private $cin;
 
@@ -76,6 +88,21 @@ class User implements UserInterface
      * @Assert\NotBlank(message="Chapms Obligatoire")
      */
     private $adresse;
+
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isVerified = false;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
 
     public function getCin(): ?int
     {
@@ -178,8 +205,29 @@ class User implements UserInterface
     {
         // TODO: Implement getSalt() method.
     }
-    public function getRoles()
+    public function getRoles(): array
     {
-        return ['ROLE_USER'];
+        $roles = $this->roles;
+        $roles[]= "ROLE_USER";
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
     }
 }

@@ -6,6 +6,7 @@ use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
+
 /**
  * @method User|null find($id, $lockMode = null, $lockVersion = null)
  * @method User|null findOneBy(array $criteria, array $orderBy = null)
@@ -47,4 +48,12 @@ class UserRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function search($term)
+    {
+        return $this->createQueryBuilder('user')
+            ->andWhere('user.username LIKE :searchTerm')
+            ->setParameter('searchTerm', '%'.$term.'%')
+            ->getQuery()
+            ->execute();
+    }
 }

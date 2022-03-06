@@ -1,7 +1,13 @@
 {% extends 'base.user.html.twig' %}
 
 {% block afficher %}
-
+    {{ form_start (form) }}
+    {{ form_row (form.first_name, {'label' : 'Nom d\'utilisateur','attr':
+        {'placeholder':'Recherche par nom...'}}) }}
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Search</button>
+    </div>
+    {{ form_end (form) }}
     {% for user in users %}
     <tr>
 
@@ -11,11 +17,11 @@
         <td> {{ user.genre }}</td>
         <td> {{ user.getDateNaissance() |date('Y-m-d') }} </td>
         <td> {{ user.email }}</td>
-        <td> {{ user.password }}</td>
+
         <td> {{ user.adresse }}</td>
         <td>
-            <a href="/user/delete/ {{ user.cin }}">Delete</a>
-            <a href="#">Edite</a>
+
+            <a href="/user/delete/ {{ user.cin }}"><button  type="button" class="btn btn-danger">Delete</button></a>
         </td>
 
     </tr>
