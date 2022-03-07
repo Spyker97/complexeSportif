@@ -8,6 +8,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
 
 class EnfantType extends AbstractType
 {
@@ -24,6 +25,9 @@ class EnfantType extends AbstractType
                 'class' => Academie::class,
                 'choice_label' => 'name',
             ])
+            ->add('captchaCode', CaptchaType::class, array(
+                'captchaConfig' => 'ExampleCaptcha'
+            ))
         ;
     }
 

@@ -11,13 +11,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 /**
  * @Route("/academie")
  */
 class AcademieController extends AbstractController
 {
     /**
-     * @Route("/affiche", name="affiche")
+     * @Route("/affiches", name="affiches")
      */
     public function index(): Response
     {
@@ -40,7 +41,7 @@ class AcademieController extends AbstractController
             $entityManager->persist($academie);
             $entityManager->flush();
 
-            return $this->redirectToRoute('affiche', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('affiches', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('academie/new.html.twig', [
@@ -70,7 +71,7 @@ class AcademieController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('affiche', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('affiches', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('academie/edit.html.twig', [
@@ -90,7 +91,7 @@ class AcademieController extends AbstractController
             $entityManager->remove($academie);
             $entityManager->flush();
 
-        return $this->redirectToRoute('affiche');
+        return $this->redirectToRoute('affiches');
 
     }
 }

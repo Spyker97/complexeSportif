@@ -5,7 +5,7 @@ namespace App\Entity;
 use App\Repository\EnfantRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use Captcha\Bundle\CaptchaBundle\Validator\Constraints as CaptchaAssert;
 
 /**
  * @ORM\Entity(repositoryClass=EnfantRepository::class)
@@ -21,18 +21,15 @@ class Enfant
 
     /**
      * @ORM\Column(type="string", length=255)
+     *  @Assert\NotBlank(
+     *     message ="Il faut mentionner le nom "
+     * )
+
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\Length
-     * (
-     * min = 2,
-     * max = 20,
-     * minMessage = "Votre age ne doit pas depasser 2 ans",
-     * maxMessage = "Votre age ne doit pas depasser 20 ans",
-     * )
 
      */
     private $age;
@@ -65,6 +62,13 @@ class Enfant
      * @ORM\ManyToOne(targetEntity=Academie::class, inversedBy="enfant")
      */
     private $academie;
+    /**
+     * @CaptchaAssert\ValidCaptcha(
+     * message = "CAPTCHA validation failed, try again."
+     * )
+     */
+    protected $captchaCode;
+
 
     public function getId(): ?int
     {
@@ -142,4 +146,14 @@ class Enfant
 
         return $this;
     }
+    public function getCaptchaCode()
+    {
+        return $this->captchaCode;
+    }
+
+    public function setCaptchaCode($captchaCode)
+    {
+        $this->captchaCode = $captchaCode;
+    }
+
 }

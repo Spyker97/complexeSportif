@@ -3,11 +3,15 @@
 {% block ajouter %}
 
     {{ form_start (form) }}
+    {{ form_start(form, {'attr': {'novalidate':'novalidate' }} ) }}
+
 
 
     <fieldset>
         {{ form_row (form.name, {'label' : 'Nom d\'utilisateur','attr':
             {'placeholder':'Entrer votre nom...'}}) }}
+        {{ form_errors(form.name) }}
+
     </fieldset>
     <fieldset>
         {{ form_row (form.poids, {'label' : '','attr':
@@ -16,7 +20,6 @@
     <fieldset>
         {{ form_row (form.taille, {'label' : '','attr':
             {'placeholder':'Entrer votre taille...'}}) }}
-        {{ form_errors(form.taille) }}
 
     </fieldset>
     <fieldset>
@@ -27,7 +30,6 @@
     <fieldset>
         {{ form_row (form.age, {'label' : '','attr':
             {'placeholder':'Entrer votre age...'}}) }}
-        {{ form_errors(form.age) }}
     </fieldset>
     <fieldset>
         {{ form_row (form.cinparent, {'label' : '','attr':
@@ -39,6 +41,11 @@
         {{ form_row (form.academie, {'label' : '','attr':
             {'placeholder':'Entrer votre sport...'}}) }}
     </fieldset>
+    <fieldset>
+        {{ form_row (form.captchaCode) }}
+    </fieldset>
+
+
 
 
     <button type="submit" class="btn btn-success">Inscription!</button>

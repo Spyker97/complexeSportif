@@ -47,4 +47,12 @@ class EnfantRepository extends ServiceEntityRepository
         ;
     }
     */
+//    public function OrderByNom(){
+//        return $query=$this->createQueryBuilder('enfant')
+//            ->orderBy('enfant.name','ASC')
+//            ->getQuery()->getResult();
+//    }
+
+
 }
+

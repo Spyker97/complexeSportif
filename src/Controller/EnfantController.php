@@ -11,9 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/enfant")
- */
+
+    /**
+     * @Route("/enfant")
+     */
 class EnfantController extends AbstractController
 {
     /**
@@ -27,7 +28,7 @@ class EnfantController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="enfant_new", methods={"GET", "POST"})
+     * @Route("/new", name="enfant_new", methods={"GET","POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -39,7 +40,7 @@ class EnfantController extends AbstractController
             $entityManager->persist($enfant);
             $entityManager->flush();
 
-            return $this->redirectToRoute('enfant_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('test');
         }
 
         return $this->render('enfant/new.html.twig', [
@@ -47,6 +48,7 @@ class EnfantController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
 
     /**
      * @Route("/{id}", name="enfant_show", methods={"GET"})
@@ -57,6 +59,18 @@ class EnfantController extends AbstractController
             'enfant' => $enfant,
         ]);
     }
+//    /**
+//     * @Route("/tri", name="tri")
+//     */
+//    public function trierparnom(EnfantRepository $repository):Response
+//    {
+//
+//
+//        return $this->render('enfant/index.html.twig', [
+//            'enfants' => $repository->OrderByNom()
+//        ]);
+//    }
+
 
     /**
      * @Route("/{id}/edit", name="enfant_edit", methods={"GET", "POST"})
@@ -79,7 +93,8 @@ class EnfantController extends AbstractController
     }
 
     /**
-     * @Route("/delete/{id}", name="enfant_delete", method={"DELETE"})
+     * @Route("/delete/{id}", name="enfant_delete")
+     * Method({"DELETE"})
      */
     public function delete(Request $request, Enfant $enfant, EntityManagerInterface $entityManager): Response
     {
@@ -90,4 +105,6 @@ class EnfantController extends AbstractController
 
         return $this->redirectToRoute('enfant_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
 }
