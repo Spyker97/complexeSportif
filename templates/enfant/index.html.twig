@@ -6,7 +6,7 @@
 {#    <select class="form-control time-during select2input" onChange="location = this.options[this.selectedIndex].value;">#}
 {#        <option value="">Trier par :</option>#}
 {#        <option value="tri">NAME</option>#}
-{#    </select>#}
+{#   </select>#}
 
         {% for enfant in enfants %}
             <tr>
@@ -26,4 +26,11 @@
 
 
     <a href="{{ path('enfant_new') }}">Create new</a>
+    <div class="row text-center">
+        <div class="col-12 mt-4">
+            <ul class="pagination justify-content-end mb-0 list-unstyled">
+                {{ knp_pagination_render(enfants) }}
+            </ul><!--end pagination-->
+        </div><!--end col-->
+    </div><!--end row-->
 {% endblock %}

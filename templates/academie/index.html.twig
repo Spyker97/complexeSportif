@@ -34,6 +34,7 @@
                                     <th>ID</th>
                                     <th>NOM</th>
                                     <th>Nombre de seances </th>
+                                    <th>Actions </th>
 
                                 </tr>
                                 </thead>
@@ -45,9 +46,12 @@
                                         <td>{{ academie.name }}</td>
                                         <td>{{ academie.nbrSeances }}</td>
 
-                                        <td><a href="{{ path('academie_delete', {'id': academie.id}) }}">Delete</a>
+                                        <td>
+                                            <a href="{{ path('academie_delete', {'id': academie.id}) }}">Delete</a>
 
                                             <a href="{{ path('academie_edit', {'id': academie.id}) }}">Edite</a>
+
+                                            <a href={{ path('pdf',{'id':academie.id}) }}>Telecharger En Pdf</a>
                                         </td>
                                     </tr>
 

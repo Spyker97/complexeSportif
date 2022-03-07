@@ -10,6 +10,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Component\Mailer\MailerInterface;
+
 
 
     /**
@@ -20,17 +23,22 @@ class EnfantController extends AbstractController
     /**
      * @Route("/affiche", name="enfant_index", methods={"GET"})
      */
-    public function index(EnfantRepository $enfantRepository): Response
+    public function index(EnfantRepository $enfantRepository,PaginatorInterface $pagination,Request $request)
     {
+        $enfant=$enfantRepository->findAll();
+        $listenfant=$pagination->paginate(
+            $enfant,
+            $request->query->get('page',2 ),2
+        );
         return $this->render('enfant/index.html.twig', [
-            'enfants' => $enfantRepository->findAll(),
+            'enfants' => $listenfant,
         ]);
     }
 
     /**
      * @Route("/new", name="enfant_new", methods={"GET","POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager,\Swift_Mailer  $mailer): Response
     {
         $enfant = new Enfant();
         $form = $this->createForm(EnfantType::class, $enfant);
@@ -39,6 +47,13 @@ class EnfantController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($enfant);
             $entityManager->flush();
+            $message = (new \Swift_Message('Nouvelle NOtification'))
+                ->setFrom('fatnassi.houssem@gmail.com')
+                ->setTo('houssem.fatnassi@esprit.tn')
+
+                ->setBody('un nouveau membre est avec nous !') ;
+            $mailer->send($message);
+            $this->addFlash('message','la reclamation a ete bien envoye');
 
             return $this->redirectToRoute('test');
         }
@@ -59,17 +74,17 @@ class EnfantController extends AbstractController
             'enfant' => $enfant,
         ]);
     }
-//    /**
-//     * @Route("/tri", name="tri")
-//     */
-//    public function trierparnom(EnfantRepository $repository):Response
+//   /**
+//    * @Route("/tri", name="tri")
+//    */
+//    public function trierparnom(EnfantRepository $repository):
 //    {
 //
 //
-//        return $this->render('enfant/index.html.twig', [
-//            'enfants' => $repository->OrderByNom()
-//        ]);
-//    }
+//       return $this->render('enfant/index.html.twig', [
+//           'enfants' => $repository->OrderByNom()
+//       ]);
+//   }
 
 
     /**
