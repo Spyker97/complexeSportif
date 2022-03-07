@@ -1,0 +1,46 @@
+
+
+
+
+
+
+{% block afficher %}
+    <h1>Abonnements</h1>
+    {% for abonnement in abonnement %}
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ abonnement.id }}</td>
+            </tr>
+            <tr>
+                <th>Type d'abonnement</th>
+                <td>{{ abonnement.type }}</td>
+            </tr>
+            <tr>
+                <th>Num_tel</th>
+                <td>{{ abonnement.number }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ abonnement.mail }}</td>
+            </tr>
+            <tr>
+                <th>date_inscri</th>
+                <td>{{ abonnement.getDateInscri |date('Y-m-d')  }}</td>
+            </tr>
+            <tr>
+                <th>cours</th>
+                <td>{{ abonnement.cours.TypeCours}}</td>
+            </tr>
+            <tr>
+                <th>****************************************</th>
+                <td>****************************************</td>
+            </tr>
+            </tbody>
+        </table>
+    {% endfor %}
+
+
+{% endblock %}
+

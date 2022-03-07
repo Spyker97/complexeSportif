@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cours{% endblock %}
+
+{% block body %}
+    <h1>Cours</h1>
+
+    <table class="table" id="datatable">
+        <tbody>
+
+            <tr>
+                <th>Id</th>
+                <td>{{ cour.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ cour.Date ? cour.Date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Nom_coach</th>
+                <td>{{ cour.NomCoach }}</td>
+            </tr>
+            <tr>
+                <th>Num_salle</th>
+                <td>{{ cour.NumSalle }}</td>
+            </tr>
+            <tr>
+                <th>Type_cours</th>
+                <td>{{ cour.TypeCours }}</td>
+            </tr>
+            <tr>
+                <th>image</th>
+            <td><div class="left-icon"><img src="{{ asset('uploads/images/' ~ cour.image) }}"
+                                            alt="" width="300" height="200"> </div></td>
+            </tr>
+            <tr>
+                <th>heure</th>
+                <td>{{ cour.heure |date ('H:i:sP') }}</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <a href="{{ path('cours_index') }}">back to list</a>
+
+    <a href="{{ path('cours_edit', {'id': cour.id}) }}">edit</a>
+
+    {{ include('cours/_delete_form.html.twig') }}
+{% endblock %}

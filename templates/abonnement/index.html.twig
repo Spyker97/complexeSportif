@@ -1,0 +1,31 @@
+{% extends 'base.abonnement.html.twig' %}
+
+
+
+{% block afficher %}
+    <h1>Abonnement index</h1>
+
+
+        {% for abonnement in abonnements %}
+            <tr>
+                <td>{{ abonnement.id }}</td>
+                <td>{{ abonnement.type }}</td>
+                <td>{{ abonnement.number }}</td>
+                <td>{{ abonnement.mail }}</td>
+                <td>{{ abonnement.getDateInscri |date('Y-m-d')  }}</td>
+
+                <td>{{ abonnement.cours.TypeCours}}</td>
+
+                <td>
+                    <a href="{{ path('abonnement_show', {'id': abonnement.id}) }}">show</a>
+                    <a href="{{ path('abonnement_edit', {'id': abonnement.id}) }}">edit</a>
+
+                </td>
+            </tr>
+
+        {% endfor %}
+
+    <a href="{{ path('abonnement_new') }}">Create new</a>
+
+    <li class="button"><a href="{{ path('abonnement_pdf') }}">PDF</a></li>
+{% endblock %}

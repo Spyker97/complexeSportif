@@ -33,6 +33,7 @@ class EnfantController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $enfant = new Enfant();
+        $enfant->setCinparent($this->getUser()->getCin());
         $form = $this->createForm(EnfantType::class, $enfant);
         $form->handleRequest($request);
 
@@ -46,6 +47,7 @@ class EnfantController extends AbstractController
         return $this->render('enfant/new.html.twig', [
             'enfant' => $enfant,
             'form' => $form->createView(),
+            'cinu'=>$this->getUser()->getCin(),
         ]);
     }
 

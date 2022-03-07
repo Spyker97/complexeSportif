@@ -1,5 +1,4 @@
 {% extends 'base.signin.html.twig' %}
-
 {% block form %}
 
     {{ form_start (form) }}
@@ -7,38 +6,31 @@
 
 
     <fieldset>
-        <h4>Votre Cin :{{ cinu }}</h4>
+        <h4>Votre Mail:{{ email }}</h4>
 
     </fieldset>
     <fieldset>
-        {{ form_row (form.name, {'label' : 'Nom d\'utilisateur','attr':
+        {{ form_row (form.type, {'label' : 'Nom d\'utilisateur','attr':
             {'placeholder':'Entrer votre nom...'}}) }}
-        {{ form_errors(form.name) }}
+
 
     </fieldset>
     <fieldset>
-        {{ form_row (form.poids, {'label' : '','attr':
+        {{ form_row (form.number, {'label' : '','attr':
             {'placeholder':'Entrer votre poids...'}}) }}
     </fieldset>
+
     <fieldset>
-        {{ form_row (form.taille, {'label' : '','attr':
+        {{ form_row (form.Date_inscri, {'label' : '','attr':
             {'placeholder':'Entrer votre taille...'}}) }}
 
     </fieldset>
     <fieldset>
-        {{ form_row (form.taille, {'label' : '','attr':
-            {'placeholder':'Entrer votre taille...'}}) }}
-
-    </fieldset>
-    <fieldset>
-        {{ form_row (form.age, {'label' : '','attr':
+        {{ form_row (form.Cours, {'label' : '','attr':
             {'placeholder':'Entrer votre age...'}}) }}
     </fieldset>
 
-    <fieldset>
-        {{ form_row (form.academie, {'label' : '','attr':
-            {'placeholder':'Entrer votre sport...'}}) }}
-    </fieldset>
+
     <fieldset>
         {% apply spaceless %}
             {{ form_row (form.captchaCode) }}
@@ -48,7 +40,17 @@
 
 
 
-    <button type="submit" class="btn btn-success">Inscription!</button>
+    <button type="submit" class="btn btn-success">Save</button>
     {{ form_end (form) }}
 
 {% endblock %}
+{#    {{ form_start(form) }}#}
+{#    <h4>Votre email: {{ email }}</h4>#}
+{#    {{ form_widget(form) }}#}
+
+{#    <button class="btn">{{ button_label|default('Save') }}</button>#}
+{#    {{ form_end(form) }}#}
+{#    #}
+{#    <a href="{{ path('abonnement_index') }}">back to list</a>#}
+
+

@@ -19,7 +19,7 @@ class Terrain
      * @ORM\Column(type="integer")
 
      */
-    public $id_terrain;
+    public $id;
 
 
     /**
@@ -37,6 +37,11 @@ class Terrain
      */
     public $equipement;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="idterrain")
+     */
+    private $reservations;
+
 
 
     public function __construct()
@@ -46,7 +51,7 @@ class Terrain
 
     public function getId(): ?int
     {
-        return $this->id_terrain;
+        return $this->id;
     }
 
 
@@ -84,6 +89,36 @@ class Terrain
     public function setEquipement(?string $equipement): self
     {
         $this->equipement = $equipement;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Reservation[]
+     */
+    public function getReservations(): Collection
+    {
+        return $this->reservations;
+    }
+
+    public function addReservation(Reservation $reservation): self
+    {
+        if (!$this->reservations->contains($reservation)) {
+            $this->reservations[] = $reservation;
+            $reservation->setIdterrain($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReservation(Reservation $reservation): self
+    {
+        if ($this->reservations->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getIdterrain() === $this) {
+                $reservation->setIdterrain(null);
+            }
+        }
 
         return $this;
     }

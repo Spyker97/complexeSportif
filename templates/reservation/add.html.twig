@@ -3,13 +3,13 @@
 {% block ajouter %}
     {{ form_start (form) }}
     <fieldset>
-        {{ form_row (form.id_terrain, {'label' : 'ID TERRAIN','attr':
+        {{ form_row (form.idterrain, {'label' : 'ID TERRAIN','attr':
             {'placeholder':'Entrer votre nom...'}}) }}
     </fieldset>
-    <fieldset>
+   {# <fieldset>
         {{ form_row (form.cin, {'label' : 'CIN','attr':
             {'placeholder':'Entrer votre nom...'}}) }}
-    </fieldset>
+    </fieldset>#}
     <fieldset>
         {{ form_row (form.discipline, {'label' : 'SPORT','attr':
             {'placeholder':'Entrer votre nom...'}}) }}

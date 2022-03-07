@@ -54,6 +54,7 @@ class TerrainController extends AbstractController
      *
      */
     public function afficheterrain(TerrainRepository $repository ){
+       // var_dump($this->getUser()->getCin());
 
 
         $terrain=$repository->findAll();

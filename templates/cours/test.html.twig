@@ -1,0 +1,27 @@
+{% extends 'base.test.html.twig' %}
+
+{% block form %}
+
+    {{ form_start (form) }}
+
+    <fieldset>
+        {{ form_row (form.Nom_coach, {'label' : '','attr':
+            {'placeholder':'Entre ur Cin...'}}) }}
+    </fieldset>
+    <fieldset>
+        {{ form_row (form.Num_salle, {'label' : 'Nom d\'utilisateur','attr':
+            {'placeholder':'Entre votre nom...'}}) }}
+    </fieldset>
+    <fieldset>
+        {{ form_row (form.Type_cours, {'label' : 'Prenom d\'utilisateur','attr':
+            {'placeholder':'Entre votre prenom...'}}) }}
+    </fieldset>
+    <fieldset>
+        {{ form_row (form.image, {'label' : '','attr':
+            {'placeholder':'votre genre...'}}) }}
+    </fieldset>
+
+
+    <button type="submit" class="btn btn-success">Inscription!</button>
+    {{ form_end (form) }}
+{% endblock %}

@@ -2,14 +2,12 @@
 
 {% block afficher %}
 
-    {{ form_start (form) }}
 
-    {{ form_row (form.first_name, {'label' : 'Nom d\'utilisateur','attr':
-        {'placeholder':'Recherche par nom...'}}) }}
-    <div class="form-group">
-        <button type="submit" class="btn btn-success">Search</button>
-    </div>
-    {{ form_end (form) }}
+
+
+    <input id="search" type="text" placeholder="Search..." />
+
+
     {% for user in users %}
     <tr>
 
@@ -23,10 +21,22 @@
         <td> {{ user.adresse }}</td>
         <td>
 
-            <a href="/user/delete/ {{ user.cin }}"><button  type="button" class="btn btn-danger">Delete</button></a>
+            <a href="/user/delete/ {{ user.id }}"><button  type="button" class="btn btn-danger">Delete</button></a>
         </td>
 
     </tr>
 
     {% endfor %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#search").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#datatable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+
+            });
+        });
+    </script>
 {% endblock %}

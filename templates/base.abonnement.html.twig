@@ -5,7 +5,7 @@
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" contendt="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="images/ahmed.ico" type="image/ico" />
 
     <title>Atlas! | </title>
@@ -29,7 +29,6 @@
     <!-- Custom Theme Style -->
     <link href="{{ asset('admin/build/css/custom.min.css') }}" rel="stylesheet">
 </head>
-
 
 <body class="nav-md">
 <div class="container body">
@@ -202,25 +201,30 @@
             <br />
 
             <div class="row">
-                {% block recherche %}
-                {% endblock %}
-
 
                 <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                     <thead>
-                  {# <tr>
+                    <tr>
                         <th>id</th>
-                        <th>Type de sport</th>
-                        <th>Nombre d'heures</th>
+                        <th>Type d'abonnement</th>
+                        <th>Num_tel</th>
+                        <th>mail</th>
+                        <th>date_inscri</th>
+
+                        <th>cours</th>
                         <th>Action</th>
 
-                    </tr> #}
+                    </tr>
                     </thead>
 
 
                     <tbody>
                     {% block afficher %}
                         <tr>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
                             <td> </td>
                             <td> </td>
                             <td> </td>

@@ -4,15 +4,16 @@
     {% for c in terrain %}
         <tr>
 
-            <td>{{ c.id_terrain }} </td>
+            <td>{{ c.id }} </td>
 
             <td>{{ c.type }} </td>
             <td>{{ c.chef }} </td>
             <td>{{ c.equipement }} </td>
             {#          <td><button type="submit"class="btn-dark">RESERVER</button>#}
             </td>
-            <td><a href="/res/add">RESERVER</a></td>
+
 
         </tr>
     {% endfor %}
+    <a href="/res/add">RESERVER</a>
 {% endblock %}

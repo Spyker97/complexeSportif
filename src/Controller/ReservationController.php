@@ -79,12 +79,14 @@ class ReservationController extends AbstractController
      */
     function add(Request $request){
         $res=new Reservation();
-        $terrain=new Terrain();
+        $res->setCin($this->getUser()->getCin());
+        //$res->setCin($this->getUser()->getUsername());
         $form=$this->createForm(ReservationType::class,$res);
         $form->add('Ajouter', SubmitType::class);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid() ){
+
 
             $em=$this->getDoctrine()->getManager();
             $em->persist($res);

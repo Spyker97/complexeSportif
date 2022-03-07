@@ -13,17 +13,12 @@ class Reservation
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
-
      * @ORM\Column(type="integer")
      */
     public $id;
 
 
-    /**
-     * @ORM\Column(type="integer")
-     * @Assert\NotBlank(message="Chapms Obligatoire")
-     */
-    public $id_terrain;
+
 
     /**
      * @ORM\Column(type="integer")
@@ -40,6 +35,11 @@ class Reservation
      */
     public $discipline;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Terrain::class, inversedBy="reservations")
+     */
+    public $idterrain;
+
 
 
     public function getId(): ?int
@@ -50,7 +50,7 @@ class Reservation
 
 
 
-    public function getIdTerrain(): ?int
+    /*public function getIdTerrain(): ?int
     {
         return $this->id_terrain;
     }
@@ -60,7 +60,7 @@ class Reservation
         $this->id_terrain = $id_terrain;
 
         return $this;
-    }
+    }*/
 
     public function getCin(): ?int
     {

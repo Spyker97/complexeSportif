@@ -19,7 +19,7 @@ class EnfantType extends AbstractType
             ->add('age')
             ->add('poids')
             ->add('taille')
-            ->add('cinparent')
+
 
             ->add('academie',EntityType::class,[
                 'class' => Academie::class,
