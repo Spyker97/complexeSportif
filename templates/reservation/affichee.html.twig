@@ -1,0 +1,28 @@
+{% extends 'base.reservation.html.twig' %}
+
+
+{% block afficher %}
+
+    {% for c in res %}
+        <tr >
+
+            <td>{{ c.id }}</td>
+            <td>{{ c.id_terrain }}</td>
+            <td>{{ c.cin }}</td>
+            <td>{{ c.discipline }}</td>
+            <td><a href="{{ path('aa',{'id':c.id}) }}">UPDATE</a>
+                <a href="{{ path('dd',{'id':c.id}) }}">DELETE</a></td>
+            <td> <a href={{ path('pdf',{'id':c.id}) }}>Telecharger En Pdf</a>
+                <a href={{ path('contact_email') }}>CONTACT</a>
+            </td>
+        </tr >
+
+
+
+    {% endfor %}
+
+
+
+{% endblock %}
+
+

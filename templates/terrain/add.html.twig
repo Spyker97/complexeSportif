@@ -1,3 +1,12 @@
+
+
+{#<h1>ajout terrain</h1>#}
+
+{#{% block ajouter %}#}
+{#{{ form(form) }}#}
+{#{% endblock %}#}
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,7 +57,7 @@
                     </div>
                     <div class="profile_info">
                         <span>Welcome,</span>
-                        <h2>BEN HADID Ahmed</h2>
+                        <h2>ayedi Ahmed</h2>
                     </div>
                 </div>
                 <!-- /menu profile quick info -->
@@ -67,23 +76,25 @@
 
                             </li>
 
+                            </li>
                             <li><a><i class="fa fa-edit"></i> TERRAIN <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="/affiche">LISTE DE TERRAINS</a></li>
 
                                     <li><a href="terrain/add">AJOUTER TERRAIN</a></li>
+
                                     <li><a href="/affichee">LISTE DE RESERVATIONS</a></li>
+
 
 
                                 </ul>
                             </li>
 
-
                         </ul>
                     </div>
-
-
                 </div>
+
+
                 <!-- /sidebar menu -->
 
                 <!-- /menu footer buttons -->
@@ -198,68 +209,74 @@
 
             <div class="row">
 
-                <table id="datatable" class="table table-striped table-bordered" style="width:100%">
-                    <thead>
-                    <tr>
-                        <th>Cin</th>
-                        <th>NameUser</th>
-                        <th>LastName</th>
-                        <th>Genre</th>
-                        <th>Date de naissance</th>
-                        <th>Email</th>
-
-                        <th>Adsresse</th>
-                        <th>Action</th>
-
-                    </tr>
-                    </thead>
+                <div class="container">
+                    <form id="contact" action="" method="post">
+                        <h1>ajout terrain</h1>
+                        {#                        {{ form(form) }}#}///////////////////////////////////////////
+                        ////////////////////////////////
 
 
-                    <tbody>
-                    {% block afficher %}
-                    <tr>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
+
+                        {{ form_start (form) }}
+
+                        <fieldset>
+                            {{ form_row (form.type, {'label' : 'TYPE','attr':
+                                {'placeholder':'Entrer votre TYPE...'}}) }}
+                        </fieldset>
+                        <fieldset>
+                            {{ form_row (form.chef, {'label' : 'CHEF','attr':
+                                {'placeholder':'Entrer votre nom...'}}) }}
+                        </fieldset>
+                        <fieldset>
+                            {{ form_row (form.equipement, {'label' : 'equipement','attr':
+                                {'placeholder':'Entrer votre nom...'}}) }}
+                        </fieldset>
+                        <button type="submit" class="btn btn-success">Inscription!</button>
+
+                        {{ form_end (form) }}
 
 
-                    </tr>
-                    {% endblock %}
-                    </tbody>
-                </table>
+
+
+                    </form>
 
 
 
 
 
 
-            </div>
-            <div class="pagination">
+                </div>
 
-                {{ knp_pagination_render(users) }}
+
 
             </div>
 
 
 
+
+
+
+
+            <div class="x_content">
+
+
+
+                <br />
+
+            </div>
+            <!-- /page content -->
+
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    Atlas<a href="https://colorlib.com">Colorlib</a>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
         </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <footer>
-            <div class="pull-right">
-                Atlas<a href="https://colorlib.com">Colorlib</a>
-            </div>
-            <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
     </div>
 </div>
-
 <!-- jQuery -->
 <script src="{{ asset('admin/vendors/jquery/dist/jquery.min.js') }}"></script>
 <!-- Bootstrap -->

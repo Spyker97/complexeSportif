@@ -1,7 +1,9 @@
 {% extends 'base.user.html.twig' %}
 
 {% block afficher %}
+
     {{ form_start (form) }}
+
     {{ form_row (form.first_name, {'label' : 'Nom d\'utilisateur','attr':
         {'placeholder':'Recherche par nom...'}}) }}
     <div class="form-group">
@@ -25,5 +27,6 @@
         </td>
 
     </tr>
+        
     {% endfor %}
 {% endblock %}

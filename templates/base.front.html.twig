@@ -55,13 +55,14 @@
                     <!-- ***** Logo End ***** -->
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
-                        <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                        <li class="scroll-to-section"><a href="#features">Terrain</a></li>
+                        <li class="scroll-to-section"><a href="/test" class="active">Home</a></li>
                         <li class="scroll-to-section"><a href="#our-classes">Evenement</a></li>
                         <li class="scroll-to-section"><a href="#schedule">Produit</a></li>
+
                         <li class="scroll-to-section"><a href="#contact-us">Contact</a></li>
 
                         {% if  app.user and app.user.roles[0]== "ROLE_ADMIN" %}
+                            <li class="scroll-to-section"><a href="/afficheterrain">TERRAINS</a></li>
                         <li class="scroll-to-section"><a class="dropdown-item" href="/admiin">Dashboard</a></li>
                         {% else %}
                         {% endif %}

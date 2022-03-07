@@ -1,0 +1,18 @@
+{% extends 'base.reservationFront.html.twig'%}
+{% block afficher %}
+
+    {% for c in terrain %}
+        <tr>
+
+            <td>{{ c.id_terrain }} </td>
+
+            <td>{{ c.type }} </td>
+            <td>{{ c.chef }} </td>
+            <td>{{ c.equipement }} </td>
+            {#          <td><button type="submit"class="btn-dark">RESERVER</button>#}
+            </td>
+            <td><a href="/res/add">RESERVER</a></td>
+
+        </tr>
+    {% endfor %}
+{% endblock %}

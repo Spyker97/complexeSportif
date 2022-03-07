@@ -131,7 +131,8 @@ class SecurityController extends AbstractController
 
             if ($first_name != ""){
                 $first_name=$form['first_name']->getData();
-            $alluser = $this->getDoctrine()->getRepository(User::class)->search($first_name);}
+            $alluser = $this->getDoctrine()->getRepository(User::class)->search($first_name);
+            }
         }
 
 
