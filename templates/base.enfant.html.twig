@@ -63,7 +63,9 @@
                             <li><a href="/test"><i class="fa fa-home"></i>To ComplexeSportif</a>
 
                             </li>
-                            <li><a href="/user"><i class="fa fa-home"></i>Users</a></li>
+                            <li><a href="/user"><i class="fa fa-home"></i>Users</a>
+
+                            </li>
                             <li><a href="/academie/affiches"><i class="fa fa-home"></i>Academie</a>
                             <li><a href="/enfant/affiche"><i class="fa fa-home"></i>Enfant</a></li>
                             <li><a><i class="fa fa-edit"></i> TERRAIN <span class="fa fa-chevron-down"></span></a>
@@ -196,19 +198,19 @@
 
             <br />
 
+
             <div class="row">
 
                 <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                     <tr>
-                        <th>Cin</th>
-                        <th>NameUser</th>
-                        <th>LastName</th>
-                        <th>Genre</th>
-                        <th>Date de naissance</th>
-                        <th>Email</th>
-
-                        <th>Adsresse</th>
+                        <th>id</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Poids</th>
+                        <th>Taille</th>
+                        <th>Cin Parent</th>
+                        <th>Academie</th>
                         <th>Action</th>
 
                     </tr>
@@ -217,17 +219,16 @@
 
                     <tbody>
                     {% block afficher %}
-                    <tr>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
-                        <td> </td>
+                        <tr>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
 
-
-                    </tr>
+                        </tr>
                     {% endblock %}
                     </tbody>
                 </table>
@@ -236,11 +237,6 @@
 
 
 
-
-            </div>
-            <div class="pagination">
-
-                {{ knp_pagination_render(users) }}
 
             </div>
 

@@ -118,8 +118,8 @@
             <h6>work harder, get stronger</h6>
             <h2>easy with our <em>gym</em></h2>
             <div class="main-button scroll-to-section">
-                {% if not app.user %}
-                <a href="/inscription">Become a member</a>
+                {% if  app.user %}
+                    <a href="/enfant/new">S'inscrire Enfant</a>
                 {% else %}
 
                 {% endif %}

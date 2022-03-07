@@ -1,0 +1,29 @@
+{% extends 'base.enfant.html.twig' %}
+
+
+
+{% block afficher %}
+    {#    <select class="form-control time-during select2input" onChange="location = this.options[this.selectedIndex].value;">#}
+    {#        <option value="">Trier par :</option>#}
+    {#        <option value="tri">NAME</option>#}
+    {#    </select>#}
+
+    {% for enfant in enfants %}
+        <tr>
+            <td>{{ enfant.id }}</td>
+            <td>{{ enfant.name }}</td>
+            <td>{{ enfant.age }}</td>
+            <td>{{ enfant.poids }}</td>
+            <td>{{ enfant.taille }}</td>
+            <td>{{ enfant.cinparent }}</td>
+            <td>{{ enfant.academie.name }}</td>
+            <td>
+
+                <a href="{{ path('enfant_edit', {'id': enfant.id}) }}">edit</a>
+            </td>
+        </tr>
+    {% endfor %}
+
+
+    <a href="{{ path('enfant_new') }}">Create new</a>
+{% endblock %}
