@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\TypeEventRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=TypeEventRepository::class)
@@ -19,11 +20,13 @@ class TypeEvent
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Champs is required")
      */
     private $type;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Champs is required")
      */
     private $description;
 

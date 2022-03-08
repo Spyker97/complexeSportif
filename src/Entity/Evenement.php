@@ -6,6 +6,7 @@ use App\Repository\EvenementRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EvenementRepository::class)
@@ -21,31 +22,37 @@ class Evenement
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Champs is required")
      */
     private $titre;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank(message="Champs is required")
      */
     private $date_start;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank(message="Champs is required")
      */
     private $date_end;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\NotBlank(message="Champs is required")
      */
     private $nombrePar;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Champs is required")
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Champs is required")
      */
     private $photo;
 
@@ -56,6 +63,7 @@ class Evenement
 
     /**
      * @ORM\ManyToOne(targetEntity=TypeEvent::class)
+     * @Assert\NotBlank(message="Champs is required")
      */
     private $type_id;
     

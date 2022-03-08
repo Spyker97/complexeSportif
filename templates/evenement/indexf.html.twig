@@ -92,7 +92,7 @@
                                                         <div class="card-body">
                                                             <h5 class="card-title">{{ evenement.titre }}</h5>
                                                             <p class="card-text">{{ evenement.description }}.</p>
-                                                            <a href="#" class="btn btn-primary">Participer</a>
+                                                            <a href="{{ path('evenement_participation',{'id': evenement.id }) }}" class="btn btn-primary">Show</a>
                                                         </div>
                                                     </div>
                                                 </div>

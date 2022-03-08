@@ -22,11 +22,11 @@
 
 
 {% block afficher %}
-
+    <input id="search" type="text" placeholder="Search..." />
     {% for c in terrain %}
         <tr>
 
-            <td>{{ c.id_terrain }} </td>
+            <td>{{ c.id }} </td>
 
             <td>{{ c.type }} </td>
             <td>{{ c.chef }} </td>
@@ -39,5 +39,19 @@
         </tr>
 
     {% endfor %}
-    {{ knp_pagination_render(terrain) }}
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#search").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#datatable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+
+            });
+        });
+    </script>
 {% endblock %}

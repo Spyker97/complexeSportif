@@ -251,9 +251,17 @@ class EvenementController extends AbstractController
         $dompdf->stream("listepdf.pdf", [
             "Attachment" => true
         ]);
-
     }
 
-    
+    /**
+     * @Route("/par/{id}", name="evenement_participation", methods={"GET"})
+     */
+    public function participer(Evenement $evenement): Response
+    {
+        return $this->render('evenement/participation.html.twig', [
+            'evenement' => $evenement,
+        ]);
+    }
+
     
 }

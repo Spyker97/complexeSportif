@@ -8,6 +8,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints\Date;
+use Captcha\Bundle\CaptchaBundle\Validator\Constraints as CaptchaAssert;
+
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -93,6 +95,13 @@ class User implements UserInterface
      * @ORM\Column(type="json")
      */
     private $roles = [];
+
+    /**
+     * @CaptchaAssert\ValidCaptcha(
+     * message = "CAPTCHA validation failed, try again."
+     * )
+     */
+    protected $captchaCode;
 
     /**
      * @ORM\Column(type="boolean")
@@ -229,5 +238,14 @@ class User implements UserInterface
         $this->isVerified = $isVerified;
 
         return $this;
+    }
+    public function getCaptchaCode()
+    {
+        return $this->captchaCode;
+    }
+
+    public function setCaptchaCode($captchaCode)
+    {
+        $this->captchaCode = $captchaCode;
     }
 }

@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\ReservationRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Captcha\Bundle\CaptchaBundle\Validator\Constraints as CaptchaAssert;
+
 /**
  * @ORM\Entity(repositoryClass=ReservationRepository::class)
  */
@@ -17,17 +19,12 @@ class Reservation
      */
     public $id;
 
-
-
-
     /**
      * @ORM\Column(type="integer")
      *@Assert\Length(min="8",max="8", minMessage="Cin should be with 8 caractaire")
-
-     *
-     *
+     * @Assert\NotBlank(message="Chapms Obligatoire")
      */
-    public $cin;
+    private $cin;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -39,6 +36,13 @@ class Reservation
      * @ORM\ManyToOne(targetEntity=Terrain::class, inversedBy="reservations")
      */
     public $idterrain;
+
+    /**
+     * @CaptchaAssert\ValidCaptcha(
+     * message = "CAPTCHA validation failed, try again."
+     * )
+     */
+    protected $captchaCode;
 
 
 
@@ -85,6 +89,14 @@ class Reservation
 
         return $this;
     }
+    public function getCaptchaCode()
+    {
+        return $this->captchaCode;
+    }
 
+    public function setCaptchaCode($captchaCode)
+    {
+        $this->captchaCode = $captchaCode;
+    }
 
 }

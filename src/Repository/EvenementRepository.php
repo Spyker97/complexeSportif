@@ -103,4 +103,24 @@ class EvenementRepository extends ServiceEntityRepository
         // returns an array of Product objects
         return $query->getResult();
     }
+
+    function dempar($idevents)
+
+    {
+
+
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT p.nombre_par
+            FROM App\Entity\Evenement p
+            WHERE p.id == :str'
+
+        )->setParameter('str', $idevents);
+
+        // returns an array of Product objects
+        $e= $query->getResult();
+
+
+    }
 }

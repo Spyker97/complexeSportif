@@ -12,7 +12,17 @@ return [
         'UserInputID' => 'captchaCode',
         'ImageWidth' => 250,
         'ImageHeight' => 50,
+    ],'ExampleCaptchaRegistration' => [
+        'UserInputID' => 'captchaCode',
+        'ImageWidth' => 250,
+        'ImageHeight' => 50,
+    ], 'ExampleCaptchaReservation' => [
+        'UserInputID' => 'captchaCode',
+        'ImageWidth' => 250,
+        'ImageHeight' => 50,
     ],
+
+
 
 ];
 

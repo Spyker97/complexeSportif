@@ -24,23 +24,29 @@ class Terrain
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="Champs is required")
      */
     public $type;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Champs is required")
      */
     public $chef;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="Champs is required")
      */
     public $equipement;
 
     /**
      * @ORM\OneToMany(targetEntity=Reservation::class, mappedBy="idterrain")
+     * @Assert\NotBlank(message="Champs is required")
      */
     private $reservations;
+
+
 
 
 

@@ -38,6 +38,11 @@
         {{ form_row (form.adresse, {'label' : '','attr':
             {'placeholder':'Votre adresse...'}}) }}
     </fieldset>
+    <fieldset>
+    {% apply spaceless %}
+        {{ form_row (form.captchaCode) }}
+    {% endapply %}
+    </fieldset>
 
     <button type="submit" class="btn btn-success">Inscription!</button>
     {{ form_end (form) }}

@@ -6,6 +6,7 @@ use App\Entity\TypeEvent;
 use App\Form\TypeEventType;
 use App\Repository\TypeEventRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,10 +20,23 @@ class TypeEventController extends AbstractController
     /**
      * @Route("/", name="type_event_index", methods={"GET"})
      */
-    public function index(TypeEventRepository $typeEventRepository): Response
+    public function index(Request $request,TypeEventRepository $repository,PaginatorInterface $paginator): Response
     {
+
+        //$repo=$this->getDoctrine()->getRepository(Terrain::class);
+        $alltype=$repository->findAll();
+        // Paginate the results of the query
+        $typeEventRepository = $paginator->paginate(
+        // Doctrine Query, not results
+            $alltype,
+            // Define the page parameter
+            $request->query->getInt('page', 1),
+            // Items per page
+            2
+        );
+
         return $this->render('type_event/index.html.twig', [
-            'type_events' => $typeEventRepository->findAll(),
+            'type_events' => $typeEventRepository,
         ]);
     }
 

@@ -1,89 +1,95 @@
-{% extends 'base.admin.html.twig' %}
- {%block body %}
- <div class="content-body">
-        <div class="container-fluid">
-            <div class="page-titles">
- <!doctype html>
+{% extends 'base.event.html.twig' %}
+ {% block satat %}
+     <div class="content-body">
+     <div class="container-fluid">
+     <div class="page-titles">
+
+     <!doctype html>
      <html lang="en">
      <center>
-     <head>
-         <meta charset="UTF-8">
-         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0
-"></script>
+         <head>
+             <meta charset="UTF-8">
+             <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
-         <meta name="viewport"
-               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-         <title>Events</title>
-     </head>
-     <body>
+             <meta name="viewport"
+                   content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+             <meta http-equiv="X-UA-Compatible" content="ie=edge">
+             <title>Events</title>
+         </head>
+         <body>
 
-     <div style="width: 75%">
-         <canvas id="myChart"></canvas>
-     </div>
-     {% set nbMarathon=0%}
-     {% set nbKickBoxing=0%}
-     {% set nbCrossfit=0%}
-     {% set nbNatation=0%}
-     
-    
-     {% for f in Reg %}
+         <div style="width: 75%">
+             <canvas id="myChart"></canvas>
+         </div>
+         {% set nbMarathon=0%}
+         {% set nbKickBoxing=0%}
+         {% set nbCrossfit=0%}
+         {% set nbNatation=0%}
+         {% set nbGala=0%}
 
 
-         {% if 'Marathon' == f.typeid %}
-             {% set  nbMarathon=nbMarathon+1 %}
+         {% for f in Reg %}
 
-         {%endif %}
 
-         {% if 'KickBoxing' ==  f.typeid %}
-             {% set  nbKickBoxing=nbKickBoxing+1 %}
-         {%endif %}
+             {% if 'Marathon' == f.typeid %}
+                 {% set  nbMarathon=nbMarathon+1 %}
 
-         {% if 'Crossfit' ==  f.typeid %}
-             {% set  nbCrossfit=nbCrossfit+1 %}
-         {%endif %}
+             {%endif %}
 
-         {% if 'Natation' ==  f.typeid %}
-             {% set nbNatation=nbNatation+1 %}
-         {%endif %}
-     {% endfor %}
+             {% if 'KickBoxing' ==  f.typeid %}
+                 {% set  nbKickBoxing=nbKickBoxing+1 %}
+             {%endif %}
 
-     <script>
-         Chart.defaults.global.title.display=true;
-     </script>
+             {% if 'Crossfit' ==  f.typeid %}
+                 {% set  nbCrossfit=nbCrossfit+1 %}
+             {%endif %}
 
-     <script language="javascript">
-         var ctx = document.getElementById('myChart').getContext('2d');
-         var chart = new Chart(ctx, {
-             // The type of chart we want to create
-             type: 'line',
+             {% if 'Natation' ==  f.typeid %}
+                 {% set nbNatation=nbNatation+1 %}
+             {%endif %}
 
-             // The data for our dataset
-             data: {
-                 labels: ['','Marathon','KickBoxing', 'Crossfit', 'Natation'],
-                 datasets: [{
-                     label: 'Nombres Totales des Evenements: {{Reg|length}}',
-                     backgroundColor: 'rgb(255, 99, 132)',
-                     borderColor: 'rgb(255, 99, 101)',
-                     data: [0,{{nbMarathon}},{{nbKickBoxing}}, {{nbCrossfit}}, {{nbNatation}}]
-                 }]
-             },
+             {% if 'Gala' == f.typeid %}
+                 {% set  nbGala=nbGala+1 %}
+             {%endif %}
 
-             // Configuration options go here
-             options: {
-                 title:{
+         {% endfor %}
 
-                     text:"Listes des evenement"
+         <script>
+             Chart.defaults.global.title.display=true;
+         </script>
+
+         <script language="javascript">
+             var ctx = document.getElementById('myChart').getContext('2d');
+             var chart = new Chart(ctx, {
+                 // The type of chart we want to create
+                 type: 'line',
+
+                 // The data for our dataset
+                 data: {
+                     labels: ['','Marathon','KickBoxing', 'Crossfit', 'Natation','Gala'],
+                     datasets: [{
+                         label: 'Nombres Totales des Evenements: {{Reg|length}}',
+                         backgroundColor: 'rgb(255, 99, 132)',
+                         borderColor: 'rgb(255, 99, 101)',
+                         data: [0,{{nbMarathon}},{{nbKickBoxing}}, {{nbCrossfit}}, {{nbNatation}},{{nbGala}}]
+                     }]
+                 },
+
+                 // Configuration options go here
+                 options: {
+                     title:{
+
+                         text:"Listes des evenements"
+                     }
+
                  }
-
-             }
-         });
-     </script>
+             });
+         </script>
 
 
 
 
-     </body>
+         </body>
      </center>
-     </html>   
-{% endblock %}
+     </html>
+ {% endblock %}

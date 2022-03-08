@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Reservation;
 
 use App\Entity\Terrain;
+use Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -24,6 +25,7 @@ class ReservationType extends AbstractType
             ])
             //           ->add('cin',TextType::class)
 //            ->add('discipline',TextType::class)
+
             ->add(
                 'discipline',
                 ChoiceType::class,
@@ -37,6 +39,9 @@ class ReservationType extends AbstractType
                     'expanded' => true
                 ]
             )
+            ->add('captchaCode', CaptchaType::class, array(
+                'captchaConfig' => 'ExampleCaptchaReservation'
+            ))
         ;
     }
 

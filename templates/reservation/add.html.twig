@@ -3,23 +3,24 @@
 {% block ajouter %}
     {{ form_start (form) }}
     <fieldset>
-        {{ form_row (form.idterrain, {'label' : 'ID TERRAIN','attr':
+        {{ form_row (form.idterrain, {'label' : 'Cheff de terrain','attr':
             {'placeholder':'Entrer votre nom...'}}) }}
     </fieldset>
-   {# <fieldset>
-        {{ form_row (form.cin, {'label' : 'CIN','attr':
-            {'placeholder':'Entrer votre nom...'}}) }}
-    </fieldset>#}
+    <fieldset>
+        <h5>Votre Cin :{{ cinn }}</h5>
+    </fieldset>
+
     <fieldset>
         {{ form_row (form.discipline, {'label' : 'SPORT','attr':
             {'placeholder':'Entrer votre nom...'}}) }}
     </fieldset>
     {#    <button type="submit" class="btn btn-success">Inscription!</button>#}
-
+<fieldset>
+    {% apply spaceless %}
+        {{ form_row (form.captchaCode) }}
+    {% endapply %}
+</fieldset>
     {{ form_end (form) }}
-
-
-
 
 {% endblock %}
 

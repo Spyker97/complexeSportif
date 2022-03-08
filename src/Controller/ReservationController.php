@@ -94,7 +94,8 @@ class ReservationController extends AbstractController
             return $this->redirectToRoute('test');
         }
         return $this->render('reservation/add.html.twig',[
-            'form'=>$form->createView()
+            'form'=>$form->createView(),
+            'cinn'=>$this->getUser()->getCin(),
         ]);
     }
 
