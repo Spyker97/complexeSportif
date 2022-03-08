@@ -1,0 +1,89 @@
+{% extends 'base.admin.html.twig' %}
+ {%block body %}
+ <div class="content-body">
+        <div class="container-fluid">
+            <div class="page-titles">
+ <!doctype html>
+     <html lang="en">
+     <center>
+     <head>
+         <meta charset="UTF-8">
+         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0
+"></script>
+
+         <meta name="viewport"
+               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+         <title>Events</title>
+     </head>
+     <body>
+
+     <div style="width: 75%">
+         <canvas id="myChart"></canvas>
+     </div>
+     {% set nbMarathon=0%}
+     {% set nbKickBoxing=0%}
+     {% set nbCrossfit=0%}
+     {% set nbNatation=0%}
+     
+    
+     {% for f in Reg %}
+
+
+         {% if 'Marathon' == f.typeid %}
+             {% set  nbMarathon=nbMarathon+1 %}
+
+         {%endif %}
+
+         {% if 'KickBoxing' ==  f.typeid %}
+             {% set  nbKickBoxing=nbKickBoxing+1 %}
+         {%endif %}
+
+         {% if 'Crossfit' ==  f.typeid %}
+             {% set  nbCrossfit=nbCrossfit+1 %}
+         {%endif %}
+
+         {% if 'Natation' ==  f.typeid %}
+             {% set nbNatation=nbNatation+1 %}
+         {%endif %}
+     {% endfor %}
+
+     <script>
+         Chart.defaults.global.title.display=true;
+     </script>
+
+     <script language="javascript">
+         var ctx = document.getElementById('myChart').getContext('2d');
+         var chart = new Chart(ctx, {
+             // The type of chart we want to create
+             type: 'line',
+
+             // The data for our dataset
+             data: {
+                 labels: ['','Marathon','KickBoxing', 'Crossfit', 'Natation'],
+                 datasets: [{
+                     label: 'Nombres Totales des Evenements: {{Reg|length}}',
+                     backgroundColor: 'rgb(255, 99, 132)',
+                     borderColor: 'rgb(255, 99, 101)',
+                     data: [0,{{nbMarathon}},{{nbKickBoxing}}, {{nbCrossfit}}, {{nbNatation}}]
+                 }]
+             },
+
+             // Configuration options go here
+             options: {
+                 title:{
+
+                     text:"Listes des evenement"
+                 }
+
+             }
+         });
+     </script>
+
+
+
+
+     </body>
+     </center>
+     </html>   
+{% endblock %}

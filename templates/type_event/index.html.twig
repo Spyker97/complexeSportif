@@ -1,0 +1,44 @@
+{% extends 'base.event.html.twig' %}
+
+{% block title %}TypeEvent index{% endblock %}
+
+{% block afficher %}
+    <h1>TypeEvent index</h1>
+    <a href="{{ path('type_event_new') }}">Create new</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type_event in type_events %}
+            <tr>
+                <td>{{ type_event.id }}</td>
+                <td>{{ type_event.type }}</td>
+                <td>{{ type_event.description }}</td>
+                {# <td>
+                    <a href="{{ path('type_event_show', {'id': type_event.id}) }}">show</a>
+                    <a href="{{ path('type_event_edit', {'id': type_event.id}) }}">edit</a>
+                </td> #}
+                <td>
+                    <a href="{{ path('type_event_edit', {'id': type_event.id}) }}"class="btn btn-success">edit</a>
+                </td>
+                <td>
+                    <form method="post" action="{{ path('type_event_delete', {'id': type_event.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ type_event.id) }}">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

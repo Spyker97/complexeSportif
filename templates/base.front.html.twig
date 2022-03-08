@@ -56,16 +56,19 @@
                     <!-- ***** Menu Start ***** -->
                     <ul class="nav">
                         <li class="scroll-to-section"><a href="/test" class="active">Home</a></li>
-                        <li class="scroll-to-section"><a href="#our-classes">Evenement</a></li>
+
                         <li class="scroll-to-section"><a href="#schedule">Calendrier</a></li>
                         <li class="scroll-to-section"><a href="/cours/showw">Salle de Sport</a></li>
+                        <li class="scroll-to-section"><a href="/evenement/indexf">Events</a></li>
 
                         <li class="scroll-to-section"><a href="#contact-us">Contact</a></li>
                         {% if  app.user and app.user.roles[0]== "ROLE_USER" %}
                             <li class="scroll-to-section"><a href="/cours/showw">Salle de Sport</a></li>
                             <li class="scroll-to-section"><a href="/afficheterrain">TERRAINS</a></li>
+
                         {% endif %}
                         {% if  app.user and app.user.roles[0]== "ROLE_ADMIN" %}
+                            <li class="scroll-to-section"><a href="/evenement/indexf">Events</a></li>
                             <li class="scroll-to-section"><a href="/afficheterrain">TERRAINS</a></li>
                             <li class="scroll-to-section"><a href="/cours/showw">Salle de Sport</a></li>
                         <li class="scroll-to-section"><a class="dropdown-item" href="/admiin">Dashboard</a></li>
@@ -150,7 +153,9 @@
     </div>
 </section>
 <!-- ***** Our Classes Start ***** -->
+{% block event %}
 
+{% endblock %}
 <!-- ***** Our Classes End ***** -->
 
 <section class="section" id="schedule">

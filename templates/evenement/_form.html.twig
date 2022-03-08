@@ -1,0 +1,23 @@
+{{ form_start(form) }}
+    <fieldset>
+    {{ form_widget(form.titre,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'titre'}})}}
+    </fieldset>
+    <fieldset>
+    {{ form_row (form.date_start, {'attr':{'placeholder':''}}) }}
+    </fieldset>
+    <fieldset>
+    <label class="required">Date start</label>
+    {{ form_widget(form.date_end,{'attr': {'placeholder': ''}})}}
+    </fieldset>
+    <fieldset>
+    {{ form_widget(form.nombrePar,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Nbre participations'}})}}
+    </fieldset>
+    <fieldset>
+    {{ form_widget(form.description,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Description'}})}}
+    </fieldset>
+    <fieldset>
+    {{ form_widget(form.photo,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'photo'}})}}
+    </fieldset>
+
+    <button class="btn btn-success">{{ button_label|default('Create') }}</button>  
+{{ form_end(form) }}

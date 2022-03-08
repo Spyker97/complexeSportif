@@ -1,0 +1,74 @@
+{% extends 'base.event.html.twig' %}
+
+{% block title %}Evenement index{% endblock %}
+
+{% block afficher %}
+    <style>
+        .img{
+            width: 60px;
+            height: 60px;
+            background-size: cover;
+            display: block;
+            border-radius: 100px;
+            -webkit-border-radius: 100px;
+            -moz-border-radius: 100px;
+        }
+    </style>
+
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Liste evenements</h6>
+    </div>
+    <tr>
+        <a href="{{ path('evenement_new') }}">Create new</a>
+    </tr>
+    <table class="table">
+        <tr>
+            <form method="" action="{{ path('evenement_search') }}">
+                <label>
+                    <input PLACEHOLDER="Search" type="text" name="data" class="form-control">
+                </label>
+                    <input type="submit" class="btn btn-success" value="FIND">
+            </form>
+        </tr>
+        <a href="{{ path('evnt_pdf') }}" class="btn btn-info btn-icon-text" >pdf</a>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Date_start</th>
+                <th>Date_end</th>
+                <th>NombrePar</th>
+                <th>Description</th>
+                <th>Photo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evenement in evenements %}
+            <tr>
+                <td>{{ evenement.id }}</td>
+                <td>{{ evenement.titre }}</td>
+                <td>{{ evenement.dateStart ? evenement.dateStart|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ evenement.dateEnd ? evenement.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ evenement.nombrePar }}</td>
+                <td>{{ evenement.description }}</td>
+                <td>  <img  src="{{ asset("assets/img/") }}{{evenement.photo}}" alt="" class="img"></td>
+              
+                <td>
+                    <a href="{{ path('evenement_edit', {'id': evenement.id}) }}"class="btn btn-success">edit</a>
+                </td>
+                <td>
+                    <form method="post" action="{{ path('evenement_delete', {'id': evenement.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ evenement.id) }}">
+                        <button class="btn btn-danger ">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

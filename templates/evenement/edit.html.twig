@@ -1,0 +1,16 @@
+{% extends 'base.event.html.twig' %}
+
+{% block title %}Edit Evenement{% endblock %}
+
+{% block content %}
+    <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">
+                    Edit Evenement
+                </h6>
+            </div>
+
+    {{ include('evenement/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('evenement_index') }}">back to list</a>
+
+{% endblock %}

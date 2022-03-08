@@ -1,0 +1,39 @@
+
+    <h1>Evenement</h1>
+ {% for evenement in evenements %}
+    <table class="table">
+    
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ evenement.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ evenement.titre }}</td>
+            </tr>
+            <tr>
+                <th>Date_start</th>
+                <td>{{ evenement.dateStart ? evenement.dateStart|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_end</th>
+                <td>{{ evenement.dateEnd ? evenement.dateEnd|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>NombrePar</th>
+                <td>{{ evenement.nombrePar }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ evenement.description }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ evenement.photo }}</td>
+            </tr>
+        </tbody>
+        
+    </table>
+{% endfor %}
+ 
