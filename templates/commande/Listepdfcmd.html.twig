@@ -1,0 +1,34 @@
+<br>
+<br>
+<br>
+
+
+
+
+            <center> <h4>Liste Des Commandes </h4>
+
+
+
+
+                        <table>
+                            <thead>
+                            <tr>
+
+                                <th>adresse</th>
+                                <th class="text-center">payement</th>
+
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for commande in commandes %}
+                                <tr>
+
+                                    <td class="text-center">{{ commande.adresse }}</td>
+                                    <td class="text-center">{{ commande.payement }}</td>
+
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+

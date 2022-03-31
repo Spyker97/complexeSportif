@@ -24,6 +24,7 @@ security:
 
 
 
+
             logout:
                 path: security_logout
                 target: test

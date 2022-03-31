@@ -65,15 +65,17 @@
                         {% if  app.user and app.user.roles[0]== "ROLE_USER" %}
                             <li class="scroll-to-section"><a href="/cours/showw">Salle de Sport</a></li>
                             <li class="scroll-to-section"><a href="/afficheterrain">TERRAINS</a></li>
+                            <li class="scroll-to-section"><a href="/produit/indexf/">Produit</a></li>
+                            <li class="scroll-to-section"><a href="/commande/indexf/">Commande</a></li>
 
                         {% endif %}
                         {% if  app.user and app.user.roles[0]== "ROLE_ADMIN" %}
-                            <li class="scroll-to-section"><a href="/evenement/indexf">Events</a></li>
                             <li class="scroll-to-section"><a href="/afficheterrain">TERRAINS</a></li>
-                            <li class="scroll-to-section"><a href="/cours/showw">Salle de Sport</a></li>
+                            <li class="scroll-to-section"><a href="/produit/indexf/">Produit</a></li>
+                            <li class="scroll-to-section"><a href="/commande/indexf/">Commande</a></li>
                         <li class="scroll-to-section"><a class="dropdown-item" href="/admiin">Dashboard</a></li>
-                        {% else %}
                         {% endif %}
+                        <li class="scroll-to-section"><a href="#contact-us">Contact</a></li>
                         {% if not app.user %}
 
                         <li class="main-button"><a href="/inscription">Sign Up</a></li>
@@ -165,7 +167,6 @@
                 <div class="section-heading dark-bg">
                     <h2>Classes <em>Schedule</em></h2>
                     <img src="{{ asset('front/assets/images/line-dec.png')}}" alt="">
-                    <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor, ultricies fermentum massa consequat eu.</p>
                 </div>
             </div>
         </div>
@@ -186,35 +187,30 @@
                     <table>
                         <tbody>
                         <tr>
-                            <td class="day-time">Fitness Class</td>
+                            <td class="day-time">Boxing </td>
                             <td class="monday ts-item show" data-tsmeta="monday">10:00AM - 11:30AM</td>
                             <td class="tuesday ts-item" data-tsmeta="tuesday">2:00PM - 3:30PM</td>
-                            <td>William G. Stewart</td>
+                            <td>Hamdi</td>
                         </tr>
                         <tr>
-                            <td class="day-time">Muscle Training</td>
+                            <td class="day-time">Yoga </td>
                             <td class="friday ts-item" data-tsmeta="friday">10:00AM - 11:30AM</td>
                             <td class="thursday friday ts-item" data-tsmeta="thursday" data-tsmeta="friday">2:00PM - 3:30PM</td>
-                            <td>Paul D. Newman</td>
+                            <td>Rim</td>
                         </tr>
                         <tr>
-                            <td class="day-time">Body Building</td>
+                            <td class="day-time">Crossfit </td>
                             <td class="tuesday ts-item" data-tsmeta="tuesday">10:00AM - 11:30AM</td>
                             <td class="monday ts-item show" data-tsmeta="monday">2:00PM - 3:30PM</td>
-                            <td>Boyd C. Harris</td>
+                            <td>Mario</td>
                         </tr>
                         <tr>
-                            <td class="day-time">Yoga Training Class</td>
+                            <td class="day-time">RPM</td>
                             <td class="wednesday ts-item" data-tsmeta="wednesday">10:00AM - 11:30AM</td>
                             <td class="friday ts-item" data-tsmeta="friday">2:00PM - 3:30PM</td>
-                            <td>Hector T. Daigle</td>
+                            <td>Nadia</td>
                         </tr>
-                        <tr>
-                            <td class="day-time">Advanced Training</td>
-                            <td class="thursday ts-item" data-tsmeta="thursday">10:00AM - 11:30AM</td>
-                            <td class="wednesday ts-item" data-tsmeta="wednesday">2:00PM - 3:30PM</td>
-                            <td>Bret D. Bowers</td>
-                        </tr>
+
                         </tbody>
                     </table>
                 </div>

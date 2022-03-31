@@ -15,6 +15,7 @@ use Doctrine\Persistence\ObjectManager;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Knp\Component\Pager\PaginatorInterface;
+//use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,6 +29,7 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 use Symfony\Component\Form\FormTypeInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 
 class SecurityController extends AbstractController
@@ -192,7 +194,63 @@ class SecurityController extends AbstractController
 
     }
 
+   #-------------------------------------------------------------------------------------------------------------------#
+
+
+    /**
+     * @Route ("/login_json/{pass}", name="login_jsonn")
+     */
+    public function login_mobile (Request $request, UserPasswordEncoderInterface $encoder , MailerInterface $mailer,$pass) :Response
+    {
+
+        $email="ahmedbhd97@gmail.com";
+
+       $user=$this->getDoctrine()->getRepository(User::class)->findOneBy(array('email'=>$email));
+
+        $datta=[];
+        if($user){
+            if($encoder->isPasswordValid($user,$pass)){
+                $datta['email']=$email;
+                $datta['password']=$pass;
+                $datta['id']=$user->getId();
+                $datta['cin']=$user->getCin();
+                $datta['prenom']=$user->getPrenom();
+                $datta['datenaissance']=$user->getDateNaissance()->format('Y-m-d');
+                $datta['genre']=$user->getGenre();
+                $datta['username']=$user->getUsername();
+            }
+        }
+
+        return new JsonResponse($datta);
+        }
+
+    /**
+     * @Route ("/inscritjson", name="inscrit_json")
+     *
+     */
+    public function Inscrit_mobile (Request $request, UserPasswordEncoderInterface $encoder , MailerInterface $mailer) :Response
+    {
+
+      $user = new User();
+      $user->setEmail($request->get('email'));
+        $user->setUsername($request->get('username'));
+        $user->setPrenom($request->get('prenom'));
+        $hash = $encoder->encodePassword($user, $request->get('password'));
+        $user->setPassword($hash);
+        $user->setRoles(["ROLE_USER"]);
+        $user->setDateNaissance(  new \DateTime('Y-m-d',$request->get('date_naissance')));//$request->get('date_naissance')
+        $user->setGenre($request->get('genre'));
+        $user->setCin((int)$request->get('cin'));
+        $user->setAdresse("fhfhfh");
+
+        $entitymanager= $this->getDoctrine()->getManager();
+        $entitymanager->persist($user);
+        $entitymanager->flush();
+
+        return new JsonResponse($user);
+    }
 
 
 
-}
+
+    }

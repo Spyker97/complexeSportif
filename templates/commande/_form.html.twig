@@ -1,0 +1,22 @@
+{{ form_start (form) }}
+
+
+<fieldset>
+        {{ form_widget(form.adresse,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Adresse'}})}}
+    </fieldset>
+
+<fieldset>
+    {{ form_widget(form.payement,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Mode de Payement'}})}}
+</fieldset>
+<fieldset>
+    {{ form_widget(form.produits,{'attr': {'class': 'form-control w-100 mt-2 mb-2','placeholder': 'Mode de Payement'}})}}
+</fieldset>
+
+<fieldset>
+    {{ form_row (form.date, {'attr':{'placeholder':''}}) }}
+</fieldset>
+<br><br>
+
+
+<button type="submit" class="btn btn-success">Create</button>
+{{ form_end (form) }}
